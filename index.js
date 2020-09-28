@@ -18,4 +18,11 @@ server.get('/api/users/:id', (req,res) => {
     res.status(200).json(user);
 });
 
+server.post('/api/users', (req,res) => {
+    const newUser = { id: nextID + 1, ...req.body };
+    users.push(newUser);
+
+    res.status(201).json(users);
+});
+
 server.listen(port, () => console.log(`Server listening on port: ${port}....`));
