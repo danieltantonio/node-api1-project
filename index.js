@@ -38,4 +38,13 @@ server.delete('/api/users/:id', (req,res) => {
 
 });
 
+server.put('/api/users/:id', (req,res) => {
+    const user = users.find(obj => obj.id === parseInt(req.params.id));
+    const update = req.body;
+
+    Object.assign(user, update);
+
+    res.status(202).json(user);
+})
+
 server.listen(port, () => console.log(`Server listening on port: ${port}....`));
